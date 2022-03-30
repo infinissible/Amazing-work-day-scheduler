@@ -1,4 +1,4 @@
-# Work Day Scheduler Starter Code
+# Amazing work day scheduler
 
 ## Purpose
 A website that offer a work day scheduler
