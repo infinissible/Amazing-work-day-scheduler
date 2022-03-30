@@ -59,13 +59,7 @@ var tasks = [];
 
 $(".container").on("click", "button", function(event) {
     var taskId = event.target.getAttribute("data-save-id");   
-    var text = $("textarea[data-text-id='"+ taskId + "']").val().trim();
-    // if (!text) {
-    //     tasks.splice(taskId, 0, "");
-    // } else {
-    //     tasks.splice(taskId, 1, text); 
-    // }
-       
+    var text = $("textarea[data-text-id='"+ taskId + "']").val().trim();  
     localStorage.setItem("tasks"+taskId, JSON.stringify(text));
 })
 
