@@ -10,19 +10,22 @@ var createTaskList = function() {
         
         var taskContainer = document.createElement("div");
         taskContainer.classList = "row d-flex justify-content-center flex-wrap"
-        taskContainer.setAttribute("id", "slot"+[i]);
+        taskContainer.setAttribute("id", "slot"+i);
 
         var taskEl = document.createElement("div");
         taskEl.classList = "hour pl-5 pt-3"                
         
         var textEl = document.createElement("textarea");
         textEl.classList = "w-75 text-weight-bold" 
+        textEl.setAttribute("data-text-id", i);
 
         var btnEl = document.createElement("button");
         btnEl.classList = "saveBtn d-flex align-items-center justify-content-center p-4"
+        btnEl.setAttribute("data-save-id", i);
 
         var iconEl = document.createElement("i");
         iconEl.classList = "fas fa-save"
+        iconEl.setAttribute("data-save-id", i);
 
         var timeBlock = document.querySelector(".container")
         
@@ -48,22 +51,26 @@ var createTimeList = function() {
             $(textSlot).addClass("present");
         } else {
             $(textSlot).addClass("future");
-        }  
-        JSON.parse(localStorage.getItem("tasks"));      
-    }    
+        }    
+    }  
 }    
 
-$(".container").on("click", "button", function() {
-    var text = $("textarea").val().trim();
-    localStorage.setItem("tasks", JSON.stringify(text));
+$(".container").on("click", "button", function(event) {
+    var taskId = event.target.getAttribute("data-save-id");   
+    var text = $("textarea[data-text-id='"+ taskId + "']").val().trim();  
+    localStorage.setItem("tasks"+taskId, JSON.stringify(text))
 })
 
-// var loadTasks = function() {
-//     JSON.parse(localStorage.getItem("tasks"));
-// }
+var loadTasks = function() {
+    var savedTasks = localStorage.getItem("tasks"+i)
+    
+    for (var i=0; i < 10; i++) {
+        
+    }    
+}
 
 
-
+loadTasks();
 currentDate();
 createTaskList();
 createTimeList();
