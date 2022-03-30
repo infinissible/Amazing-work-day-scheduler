@@ -12,4 +12,4 @@ A website that offer a work day scheduler
 https://infinissible.github.io/Amazing-work-day-scheduler/
 
 ## Screenshot
-<img src="./develop/screenshot.png" alt="" />
+<img src="./Develop/screenshot.png" alt="" />
