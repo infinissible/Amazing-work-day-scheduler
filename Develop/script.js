@@ -6,7 +6,7 @@ var currentDate = function() {
 }
 
 var createTaskList = function() {    
-    for (var i = 0; i < 9; i++) {              
+    for (var i = 0; i < 9; i++) {                
         
         var taskContainer = document.createElement("div");
         taskContainer.classList = "row d-flex justify-content-center flex-wrap"
@@ -17,8 +17,8 @@ var createTaskList = function() {
         
         var textEl = document.createElement("textarea");
         textEl.classList = "w-75 text-weight-bold" 
-        textEl.setAttribute("data-text-id", i);
-
+        textEl.setAttribute("data-text-id", i);    
+        
         var btnEl = document.createElement("button");
         btnEl.classList = "saveBtn d-flex align-items-center justify-content-center p-4"
         btnEl.setAttribute("data-save-id", i);
@@ -55,22 +55,34 @@ var createTimeList = function() {
     }  
 }    
 
+var tasks = [];
+
 $(".container").on("click", "button", function(event) {
     var taskId = event.target.getAttribute("data-save-id");   
-    var text = $("textarea[data-text-id='"+ taskId + "']").val().trim();  
-    localStorage.setItem("tasks"+taskId, JSON.stringify(text))
+    var text = $("textarea[data-text-id='"+ taskId + "']").val().trim();
+    // if (!text) {
+    //     tasks.splice(taskId, 0, "");
+    // } else {
+    //     tasks.splice(taskId, 1, text); 
+    // }
+       
+    localStorage.setItem("tasks"+taskId, JSON.stringify(text));
 })
 
-var loadTasks = function() {
-    var savedTasks = localStorage.getItem("tasks"+i)
-    
-    for (var i=0; i < 10; i++) {
+var loadTasks = function() {  
+
+    for (var i = 0; i < 9; i++) {
         
-    }    
+        var savedTasks = localStorage.getItem("tasks"+i);
+        savedTasks = JSON.parse(savedTasks);
+        tasks.push(savedTasks);
+
+        $("textarea[data-text-id='"+ i + "']").text(tasks[i]);    
+
+    } console.log(savedTasks);            
 }
 
-
-loadTasks();
 currentDate();
 createTaskList();
 createTimeList();
+loadTasks();
