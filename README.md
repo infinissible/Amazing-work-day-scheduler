@@ -14,3 +14,12 @@ https://infinissible.github.io/Amazing-work-day-scheduler/
 
 ## Screenshot
 <img src="./Develop/screenshot.png" alt="" />
+
+## Questions
+
+Find me on GitHub
+infinissible
+repo: https://github.com/infinissible
+
+Email me with any questions
+infinissible@gmail.com
